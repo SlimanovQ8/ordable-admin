@@ -6,7 +6,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
   const fetchInfo = () => { 
-    fetch('http://localhost:4000/allproducts') 
+    fetch('http://localhost:8000/getorders') 
             .then((res) => res.json()) 
             .then((data) => setAllProducts(data))
     }
@@ -33,7 +33,7 @@ const ListProduct = () => {
 
   return (
     <div className="listproduct">
-      <h1>All Products List</h1>
+      <h1>All Orders {allproducts.length}</h1>
       <div className="listproduct-format-main">
           <p>Products</p>
           <p>Title</p>
@@ -48,7 +48,7 @@ const ListProduct = () => {
           return (
             <div>
               <div className="listproduct-format">
-                <img className="listproduct-product-icon" src={e.image} alt="" />
+                <img className="listproduct-product-icon" src={e.cartItems[0].image} alt="" />
                 <p cartitems-product-title>{e.name}</p>
                 <p>${e.old_price}</p>
                 <p>${e.new_price}</p>
